@@ -6,9 +6,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.9.1",
+    "moralis": "^1.9.0",
     "next": "latest",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-moralis": "^1.4.0",
+    "web3": "^1.7.4"
   },
   "devDependencies": {
     "@types/node": "17.0.35",
