@@ -68,7 +68,7 @@ function Home() {
         AmountPaid: b,
       })
       .then(
-        (monster) => {
+        (order) => {
           alert("CREATED");
           // The object was saved successfully.
         },
