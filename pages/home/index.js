@@ -7,6 +7,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Moralis from "moralis";
 import Web3 from "web3";
 import { contractABI, contractAddress } from "../../contract";
+import { useNewMoralisObject } from "react-moralis";
 const web3 = new Web3(Web3.givenProvider);
 function Home() {
   const arr = [
@@ -41,19 +42,42 @@ function Home() {
       price: "5000",
     },
   ];
-  const { isAuthenticated, user } = useMoralis();
+
+  const { isAuthenticated, user, logout } = useMoralis();
+  const { save } = useNewMoralisObject("Monster");
   const router = useRouter();
   useEffect(() => {
     if (!isAuthenticated) {
       router.push("/");
     }
   }, [isAuthenticated]);
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    console.log(event.target);
-    let name = "Laptop";
-    let description = "12321030013223";
-    let url = "https://m.media-amazon.com/images/I/81KoSSAwH2L._SL1500_.jpg";
+  const onSubmit = async (a, b, c) => {
+    console.log("HEllo");
+
+    // console.log(a, b, c);
+    let name = `${a}`;
+    let description = `${parseInt(Math.random() * 10000000000)}`;
+    // console.log(description);
+    const Order = Moralis.Object.extend(Moralis.User.current().id);
+    const order = new Order();
+
+    order
+      .save({
+        name: a,
+        serialNo: description,
+        AmountPaid: b,
+      })
+      .then(
+        (monster) => {
+          alert("CREATED");
+          // The object was saved successfully.
+        },
+        (error) => {
+          // The save failed.
+          // error is a Moralis.Error with an error code and message.
+        }
+      );
+    let url = `${c}`;
     try {
       const metadata = { name, description, image: url };
       const f2 = new Moralis.File(`${name}metadata.json`, {
@@ -74,6 +98,9 @@ function Home() {
   };
   return (
     <>
+      <Button variant="contained" onClick={logout}>
+        Logout
+      </Button>
       <div className="grid grid-cols-2 justify-center gap-20 justify-items-center ">
         {arr.map((ar) => (
           <div className="text-center rounded-2xl">
@@ -87,7 +114,7 @@ function Home() {
             <h1 className="text-2xl">₹ {ar.price}</h1>
             <Button
               variant="contained"
-              onClick={onSubmit}
+              onClick={() => onSubmit(ar.name, ar.price, ar.url)}
               endIcon={<ShoppingCartIcon />}
             >
               Buy Now
