@@ -5,25 +5,23 @@ import { useEffect, useRef } from "react";
 import { useMoralis } from "react-moralis";
 import { useRouter } from "next/router";
 const Home = () => {
-  const { authenticate, isAuthenticated } = useMoralis();
+  const { isAuthenticated } = useMoralis();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const router = useRouter();
   useEffect(() => {
-    if (isAuthenticated) {
-      const contract = new web3.eth.Contract(contractABI, contractAddress);
-      const response = await contract.methods
-        .checkUser()
-        .send({ from: user.get("ethAddress") });
-        console.log(response.events.Transfer.returnValues)
-        let userExists=response.events.Transfer.returnValues;
-      if(userExists)
-      router.push("/home");
-      else 
-      router.push("/signup")
+    if (!isAuthenticated) {
+      router.push("/");
     }
-  }, [isAuthenticated]);
-  const onSubmit1 = async (event) => {
+  });
+  const onSubmit = async (event) => {
     event.preventDefault();
-    await authenticate();
+    const contract = new web3.eth.Contract(contractABI, contractAddress);
+    let response = await contract.methods
+      .storeUser(email, name)
+      .send({ from: user.get("ethAddress") });
+    console.log(response.events.Transfer.returnValue);
+    router.push("/home");
   };
   const phoneNumberInputElement = useRef();
   return (
@@ -37,14 +35,35 @@ const Home = () => {
         <div class="row-span-3 col-span-2 ... bg-white flex flex-wrap justify-center drop-shadow-lg mx-auto ">
           <div className="block justify-center text-left drop-shadow-md mx-auto">
             <h1 className="mx-6 mt-3 text-3xl justify-center  font-semibold font-sans">
-              Sign up
+              Enter your Details
             </h1>
+
+            <TextField
+              required
+              sx={{ mt: 5, ml: 3, width: 3 / 4 }}
+              id="outlined-basic"
+              label="Name"
+              variant="outlined"
+              value={name}
+              onChange={() => setName(event.target.value)}
+            />
+            <TextField
+              required
+              sx={{ mt: 5, ml: 3, width: 3 / 4 }}
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              type="email"
+              value={email}
+              onChange={() => setEmail(event.target.value)}
+            />
+
             <div className="flex">
               <button
-                onClick={authenticate}
+                onClick={onSubmit}
                 className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2 flex mx-7 mt-5"
               >
-                Connect
+                Submit
               </button>
             </div>
           </div>
