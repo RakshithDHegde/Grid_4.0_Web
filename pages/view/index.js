@@ -10,7 +10,7 @@ import { contractABI, contractAddress } from "../../contract";
 import { useNewMoralisObject } from "react-moralis";
 import { stringify } from "querystring";
 const web3 = new Web3(Web3.givenProvider);
-function  Home() {
+const  Home=()=>{
   const { isAuthenticated, logout } = useMoralis();
   const { save } = useNewMoralisObject("Monster");
   const router = useRouter();
