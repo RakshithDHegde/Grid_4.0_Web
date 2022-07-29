@@ -14,38 +14,44 @@ function Home() {
     {
       name: "Laptop",
       url: "https://m.media-amazon.com/images/I/81KoSSAwH2L._SL1500_.jpg",
-      price: "50000",
+      price: .43,
       expiry: 300000,
+      productNo:"prod1",
     },
     {
       name: "Phone",
       url: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c21hcnRwaG9uZXxlbnwwfHwwfHw%3D&w=1000&q=80",
-      price: "15000",
+      price: .12,
       expiry: 30000,
+      productNo:"prod2",
     },
     {
       name: "Fridge",
       url: "https://rukminim1.flixcart.com/image/416/416/kfbfr0w0/refrigerator-new/v/u/y/563gsmqs-na-marq-by-flipkart-original-imafvtfahqa9hzgg.jpeg?q=70",
-      price: "25000",
+      price: 0.05,
       expiry: 30000,
+      productNo:"prod3",
     },
     {
       name: "Mixer",
       url: "https://5.imimg.com/data5/YW/VZ/FT/SELLER-85407527/mixer-png-500x500.png",
-      price: "7000",
+      price: .12,
       expiry: 30000,
+      productNo:"prod4",
     },
     {
       name: "TV",
       url: "https://media.croma.com/image/upload/v1652358374/Croma%20Assets/Entertainment/Television/Images/251388_1_bnz4vl.png",
-      price: "17000",
+      price: .036,
       expiry: 30000,
+      productNo:"prod5",
     },
     {
       name: "Watch",
       url: "https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/wearables/watch-3/img/id/huawei-watch-3-strap-3-1.png",
       price: "5000",
       expiry: 30000,
+      productNo:"prod6",
     },
   ];
 
@@ -82,27 +88,6 @@ function Home() {
         .mint(meturl, serialno)
         .send({ from: user.get("ethAddress") });
         console.log(response);
-      // const tokenId = response.events.Transfer.returnValues.tokenId;
-      //alert(`Nft minted successfully ${tokenId} and ${contractAddress}`);
-      // const Order = Moralis.Object.extend(Moralis.User.current().id);
-      // const order = new Order();
-
-      // order
-      //   .save({
-      //     name: a,
-      //     serialNo: serialno,
-      //     AmountPaid: b,
-      //   })
-      //   .then(
-      //     (order) => {
-            // alert("CREATED");
-            // // The object was saved successfully.
-      //     },
-      //     (error) => {
-      //       // The save failed.
-      //       // error is a Moralis.Error with an error code and message.
-      //     }
-      // );
     } catch (err) {
       console.log(err);
     }
