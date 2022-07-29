@@ -5,6 +5,7 @@ import { useMoralis } from "react-moralis";
 import { useRouter } from "next/router";
 import Web3 from "web3";
 import { contractABI, contractAddress } from "../../contract";
+import Header from "../components/Header";
 const Home = () => {
   const web3 = new Web3(Web3.givenProvider);
   const { isAuthenticated, user } = useMoralis();
@@ -12,6 +13,7 @@ const Home = () => {
   const [email, setEmail] = useState("");
   const [phone,setPhone]=useState("");
   const router = useRouter();
+
   useEffect(() => {
     if (!isAuthenticated) {
       router.push("/");
@@ -79,9 +81,9 @@ const Home = () => {
                 required
                 sx={{ mt: 5, ml: 3, width: 3 / 4 }}
                 id="outlined-basic"
-                label="Email"
+                label="Phone No"
                 variant="outlined"
-                type="email"
+                type="number"
                 value={phone}
                 onChange={(event) => setPhone(event.target.value)}
               />
