@@ -8,7 +8,6 @@ import Moralis from "moralis";
 import Web3 from "web3";
 import { contractABI, contractAddress } from "../../contract";
 import { useNewMoralisObject } from "react-moralis";
-import { stringify } from "querystring";
 const web3 = new Web3(Web3.givenProvider);
 function Home() {
   const arr = [
@@ -16,7 +15,7 @@ function Home() {
       name: "Laptop",
       url: "https://m.media-amazon.com/images/I/81KoSSAwH2L._SL1500_.jpg",
       price: "50000",
-      expiry: 30000,
+      expiry: 300000,
     },
     {
       name: "Phone",
@@ -59,24 +58,15 @@ function Home() {
     }
   }, [isAuthenticated]);
   const onSubmit = async (a, b, c, d) => {
-    console.log("HEllo");
-
-    let n = localStorage.getItem("prod_val");
-
-    if (n === null) {
-      n = 0;
-    }
-
-    n++;
-
-    localStorage.setItem("prod_val", n);
+    let n = Date.now() - 1534567891012;
 
     // console.log(a, b, c);
     let name = `${a}`;
     let expiry = `${Date.now() + d}`;
 
     let serialno = `${a + n}`;
-
+    let phone = "+916362497977";
+    let message = "hello Rakshith";
     let price = b;
     let url = `${c}`;
     try {
@@ -91,7 +81,24 @@ function Home() {
       const response = await contract.methods
         .mint(meturl, serialno)
         .send({ from: user.get("ethAddress") });
-      const tokenId = response.events.Transfer.returnValues.tokenId;
+      console.log(response);
+
+      const res = await fetch("api/sendMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ phone: phone, message: message }),
+      });
+      const apiResponse = await res.json();
+
+      if (apiResponse.success) {
+        console.log("sucees");
+      } else {
+        console.log("error");
+      }
+
+      // const tokenId = response.events.Transfer.returnValues.tokenId;
       //alert(`Nft minted successfully ${tokenId} and ${contractAddress}`);
       // const Order = Moralis.Object.extend(Moralis.User.current().id);
       // const order = new Order();
@@ -104,8 +111,8 @@ function Home() {
       //   })
       //   .then(
       //     (order) => {
-      //       alert("CREATED");
-      //       // The object was saved successfully.
+      // alert("CREATED");
+      // // The object was saved successfully.
       //     },
       //     (error) => {
       //       // The save failed.
