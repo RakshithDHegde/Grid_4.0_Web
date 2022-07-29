@@ -17,6 +17,7 @@ function Home() {
       price: .43,
       expiry: 300000,
       productNo:"prod1",
+      wei:"430000000000000000",
     },
     {
       name: "Phone",
@@ -24,6 +25,7 @@ function Home() {
       price: .12,
       expiry: 30000,
       productNo:"prod2",
+      wei:"120000000000000000",
     },
     {
       name: "Fridge",
@@ -31,6 +33,7 @@ function Home() {
       price: 0.05,
       expiry: 30000,
       productNo:"prod3",
+      wei:"180000000000000000",
     },
     {
       name: "Mixer",
@@ -38,6 +41,7 @@ function Home() {
       price: .12,
       expiry: 30000,
       productNo:"prod4",
+      wei:"50000000000000000",
     },
     {
       name: "TV",
@@ -45,13 +49,15 @@ function Home() {
       price: .036,
       expiry: 30000,
       productNo:"prod5",
+      wei:"120000000000000000",
     },
     {
       name: "Watch",
       url: "https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/wearables/watch-3/img/id/huawei-watch-3-strap-3-1.png",
-      price: "5000",
+      price:.036,
       expiry: 30000,
       productNo:"prod6",
+      wei:"36000000000000000",
     },
   ];
 
@@ -64,15 +70,15 @@ function Home() {
     }
   }, [isAuthenticated]);
   const onSubmit = async (a, b, c, d) => {
-
-    let n = Date.now()-1534567891012;
+    let n = Date.now() - 1534567891012;
 
     // console.log(a, b, c);
     let name = `${a}`;
     let expiry = `${Date.now() + d}`;
 
     let serialno = `${a + n}`;
-
+    let phone = "+916362497977";
+    let message = "hello Rakshith";
     let price = b;
     let url = `${c}`;
     try {
@@ -85,7 +91,7 @@ function Home() {
       console.log(meturl);
       const contract = new web3.eth.Contract(contractABI, contractAddress);
       const response = await contract.methods
-        .mint(meturl, serialno)
+        .createWarranty(meturl, serialno)
         .send({ from: user.get("ethAddress") });
         console.log(response);
     } catch (err) {

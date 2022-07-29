@@ -3,11 +3,8 @@ import React from "react";
 import { useEffect,useState } from "react";
 import { useMoralis } from "react-moralis";
 import Button from "@mui/material/Button";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import Moralis from "moralis";
 import Web3 from "web3";
 import { contractABI, contractAddress } from "../../contract";
-import { useNewMoralisObject } from "react-moralis";
 import axios from "axios"
 const web3 = new Web3(Web3.givenProvider);
 function Home() {
