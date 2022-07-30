@@ -9,7 +9,6 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 error NotOwner();
 
 contract  mintGrid is  ERC721,ERC721URIStorage,ERC721Enumerable {
-
     using SafeMath for uint256;
     uint constant mintprice=0;
         struct  UserData{
@@ -71,7 +70,28 @@ function createWarranty (string memory _uri,string memory prodId,string memory p
     users[msg.sender].productIds.push(prodId);
     owners[prodId]=msg.sender;
 }
-
+function removeElement(string[] storage _array, string memory _element) internal {
+        for (uint256 i; i<_array.length; i++) {
+            if (keccak256(abi.encodePacked((_array[i]))) == keccak256(abi.encodePacked((_element)))) {
+                _array[i] = _array[_array.length - 1];
+                _array.pop();
+                break;
+            }
+        }
+    }
+function transferProduct(address addr,string memory prodId)public {
+    require(owners[prodId]==msg.sender,"Invalid Owner");
+    uint256 tokenId=producIdMapping[prodId];
+    super.safeTransferFrom(msg.sender,addr,tokenId);
+        removeElement(users[msg.sender].productIds,prodId);
+       if(bytes(users[msg.sender].name).length!=0){
+            users[addr].productIds.push(prodId);
+            owners[prodId]=addr;
+       }
+       else {
+           owners[prodId]=addr;
+       }
+}
 function getUserProducts()public view returns(string [] memory){
 string [] memory prodIdArr=users[msg.sender].productIds;
 string [] memory products=new string[](prodIdArr.length);
@@ -88,9 +108,16 @@ function getWarranty(string memory prodId)public view returns(string memory){
 function getOwner(string memory prodId)public view returns (string [] memory){
     string[] memory user=new string[] (3);
     address owner=owners[prodId];
+     if(bytes(users[owner].name).length!=0){
     user[0]=users[owner].name;
     user[1]=users[owner].email;
     user[2]=Strings.toHexString(uint256(uint160(owner)), 20);
+     }
+     else{
+         user[0]="Transfered to someone outside";
+         user[1]="NA";
+         user[2]=Strings.toHexString(uint256(uint160(owner)), 20);
+     }
     return user;
 }
 modifier onlyOwner {

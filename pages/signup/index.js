@@ -22,12 +22,17 @@ const Home = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     if (!email || !name) return;
+    try{
     const contract = new web3.eth.Contract(contractABI, contractAddress);
     let response = await contract.methods
       .storeUser(email, name,phone)
       .send({ from: user.get("ethAddress") });
     console.log(response);
     router.push("/home");
+    }
+    catch (err){
+      alert("Error Occured")
+    }
   };
   return (
     <>

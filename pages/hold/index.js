@@ -26,11 +26,15 @@ const Home = () => {
   });
   const onSubmit = async (event) => {
     event.preventDefault();
+    try{
     const contract = new web3.eth.Contract(contractABI, contractAddress);
     let res=await contract.methods
     .holdLottery()
     .send({from: user.get("ethAddress")})
-    console.log(res)
+    }
+    catch {
+      alert("Some Error has occured")
+    }
   };
   return (
     <>

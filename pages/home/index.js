@@ -99,7 +99,7 @@ function Home() {
         .send({ from: user.get("ethAddress"),value:e });
         console.log(response);
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
   return (
