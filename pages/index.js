@@ -8,7 +8,6 @@ import Moralis from "moralis";
 import Web3 from "web3";
 import { contractABI, contractAddress } from "../contract";
 import { useNewMoralisObject } from "react-moralis";
-import Header from "./components/Header";
 const Home = () => {
   const [boolpr, setBoolpr] = useState(false);
   const web3 = new Web3(Web3.givenProvider);
@@ -43,7 +42,6 @@ const Home = () => {
   const phoneNumberInputElement = useRef();
   return (
     <>
-      <Header></Header>
 
       {/* <header /> */}
       <div className="flex min-h-screen flex-col  rounded-lg items-center justify-center py-2">
