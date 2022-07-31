@@ -1,4 +1,4 @@
-# Grid_4.0 Submission on Blockchain based Ecommerce website by team Programmers
+# Grid_4.0 Submission on Blockchain based Ecommerce website by team Brogrammers
 
 ## Team Members
 * Karthik Pai - ISE Dept in RV College of Engineering -> Github Repo: https://github.com/kptriescoding
