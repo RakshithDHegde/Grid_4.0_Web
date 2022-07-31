@@ -38,3 +38,5 @@
 * Check out the App code in https://github.com/mssandeepkamath/Grid_4.0_Android
 
 * The Link to the demo is: https://www.youtube.com/watch?v=U3z-g4FgZS0
+
+* The Link to presentation is: https://www.canva.com/design/DAFH6VUw7K8/fb0JkUMVpUqKjKMO6g02Uw/view
