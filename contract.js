@@ -1,4 +1,4 @@
-export const contractAddress = "0x3BF8ad9f75a6418A19c77e53C7DdB651DF4f76E2";
+export const contractAddress = "0x1dBacB298f8A68F00DdFeb45cB5c9a417Ba454aE";
 export const contractABI = [
   {
     inputs: [],
@@ -201,24 +201,6 @@ export const contractABI = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "addr",
-        type: "address",
-      },
-      {
-        internalType: "string",
-        name: "prodId",
-        type: "string",
-      },
-    ],
-    name: "tranferProduct",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     anonymous: false,
     inputs: [
       {
@@ -262,6 +244,24 @@ export const contractABI = [
       },
     ],
     name: "transferFrom",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "prodId",
+        type: "string",
+      },
+    ],
+    name: "transferProduct",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

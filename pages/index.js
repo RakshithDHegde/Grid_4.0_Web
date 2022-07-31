@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import TextField from "@mui/material/TextField";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMoralis } from "react-moralis";
 import { useRouter } from "next/router";
 import Moralis from "moralis";
@@ -10,10 +10,15 @@ import { contractABI, contractAddress } from "../contract";
 import { useNewMoralisObject } from "react-moralis";
 import Header from "./components/Header";
 const Home = () => {
+  const [boolpr, setBoolpr] = useState(false);
   const web3 = new Web3(Web3.givenProvider);
   const { authenticate, user, isAuthenticated } = useMoralis();
   const router = useRouter();
   const checkUsers = async () => {
+    if (window.location.href === "https://flipkartgrid.vercel.app/products") {
+      setBoolpr(true);
+    }
+
     const contract = new web3.eth.Contract(contractABI, contractAddress);
     const response = await contract.methods
       .checkUser()
@@ -22,7 +27,9 @@ const Home = () => {
       .checkContractOwner()
       .call({ from: user.get("ethAddress") });
     let userExists = response;
-    if (userExists) !res ? router.push("/home") : router.push("/view");
+    if (userExists && !boolpr)
+      !res ? router.push("/home") : router.push("/view");
+    else if (userExists && boolpr) router.push("/products");
     else router.push("/signup");
   };
   useEffect(() => {

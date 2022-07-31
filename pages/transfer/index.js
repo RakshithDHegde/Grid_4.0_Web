@@ -24,6 +24,7 @@ const Home = () => {
     event.preventDefault();
     if (!address) {
       setError(true);
+      console.log("Address not found");
       setTimeout(() => {
         setError(false);
       }, 5000);
@@ -32,13 +33,14 @@ const Home = () => {
     try {
       const contract = new web3.eth.Contract(contractABI, contractAddress);
       let response = await contract.methods
-        .tranferProduct(address, prodId)
+        .transferProduct(address, prodId)
         .send({ from: user.get("ethAddress") });
       setSucess(true);
       setTimeout(() => {
         setSucess(false);
       }, 5000);
     } catch (err) {
+      console.log(err);
       setError(true);
       setTimeout(() => {
         setError(false);

@@ -192,7 +192,7 @@ const Header = () => {
                   onClickCapture={changeRouter("products")}
                   class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
                 >
-                  See your purchase
+                  Your Orders
                 </button>
               </li>
               <li>
@@ -201,7 +201,7 @@ const Header = () => {
                   onClickCapture={changeRouter("see")}
                   class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
                 >
-                  See the Winners
+                  Winnner
                 </button>
               </li>
               <li>
@@ -210,7 +210,7 @@ const Header = () => {
                   onClickCapture={changeRouter("transfer")}
                   class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
                 >
-                  Tranfer Your Product
+                  Tranfer
                 </button>
               </li>
             </ul>

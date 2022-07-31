@@ -39,7 +39,7 @@ const Home = () => {
         <div class="container flex flex-wrap justify-center items-center mx-auto">
           <a href="/" class="flex items-center">
             <img
-              src="https://e7.pngegg.com/pngimages/946/191/png-clipart-flipkart-e-commerce-logo-bangalore-chief-executive-others-miscellaneous-blue.png"
+              src="https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6299958714b6b_150150_-_challenge_logo.png?d=110x110"
               class="mr-3 h-full sm:h-9"
               alt="Flipkart Logo"
             />
