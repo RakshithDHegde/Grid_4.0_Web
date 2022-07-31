@@ -122,7 +122,7 @@ function Home() {
   };
   return (
     <>
-      <div className="grid grid-cols-2 justify-center gap-20 justify-items-center ">
+      <div className="grid grid-cols-2 overflow-x-hidden justify-center gap-20 justify-items-center ">
         <Header />
         <div className="text-center">
           <h1 className=" mx-auto flex -ml-32  mt-32 text-4xl justify-center text-center font-semibold font-sans">
@@ -130,8 +130,8 @@ function Home() {
           </h1>
         </div>
 
-        <div class="grid grid-rows-3 grid-cols-2 gap-0 absolute w-3/4  lg:top-20 top-10  rights-1/3 left-2/3 lg:right-80 lg:left-80 z-50  mt-16  text-center ">
-          <div className="grid grid-cols-1 left-1/3 mx-auto  relative">
+        <div class="grid grid-rows-3 grid-cols-2 gap-0 absolute mx-auto left-1/4   w-full  lg:top-20 top-10   z-10  mt-16  text-center ">
+          <div className="grid grid-cols-1 mx-auto  relative">
             {renderProducts()}
           </div>
         </div>

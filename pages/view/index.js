@@ -57,22 +57,24 @@ const Home = () => {
     <>
       <div className="grid grid-cols-2 justify-center gap-20 justify-items-center ">
         <Header />
-        <div class="grid grid-rows-3 grid-cols-2 gap-0 absolute lg:top-20 top-10  rights-1/3  lg:right-80 lg:left-80 z-50  mt-16  text-center ">
-          <div class="row-span-3 col-span-2 ... bg-white flex flex-wrap justify-center drop-shadow-lg mx-auto ">
-            <div className="block justify-center text-left drop-shadow-md mx-auto">
+        <div class="grid grid-rows-3  grid-cols-2 gap-0 absolute lg:top-20 top-10  rights-1/3  lg:right-80 lg:left-80 z-10  mt-24  text-center ">
+          <div class="row-span-3 mt-20 col-span-2 ...  bg-white flex flex-wrap justify-center drop-shadow-lg mx-auto ">
+            <div className="block justify-center text-center items-center drop-shadow-md mx-auto">
               <TextField
                 required
-                sx={{ mt: 5, ml: 3, width: 3 / 4 }}
+                sx={{ mt: 5, width: 3 / 4 }}
                 id="outlined-basic"
                 label="SerialNo"
                 variant="outlined"
                 value={SNo}
                 onChange={(event) => setSNo(event.target.value)}
+                className="mb-3"
               />
               <Button
-                variant="contained"
+                variant="outlined"
                 onClick={() => onSubmit()}
                 endIcon={<ShoppingCartIcon />}
+                className="mx-auto mb-4 mt-10"
               >
                 Check Warranty
               </Button>

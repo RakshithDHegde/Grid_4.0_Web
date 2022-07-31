@@ -209,11 +209,11 @@ function Home() {
             Order Could not be placed. Please try again!
           </Alert>
         )}
-        <div class="grid grid-rows-6 grid-cols-1 gap-0 absolute lg:top-20 top-10 justify-center items-center align-items-center z-50  mt-16  text-center ">
+        <div class="grid grid-rows-6 grid-cols-1 gap-0 absolute lg:top-20 top-10 justify-center items-center align-items-center z-10  mt-16  text-center ">
           {qr && (
             <div
               tabindex="-1"
-              class=" fixed bottom-1/2 right-0 left-0 z-50 md:inset-0 backdrop-blur-sm  md:h-full"
+              class=" fixed bottom-1/2 right-0 left-0 z-10 md:inset-0 backdrop-blur-sm  md:h-full"
               onClick={removeModal}
             >
               <div class="fixed p-4  top-1/4 left-1/3 right-2/3 -bottom-1/3  mx-auto  w-full max-w-md h-full md:h-auto">
@@ -315,7 +315,7 @@ function Home() {
             //   </Button>
             // </div>
 
-            <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row w-full my-12 lg:w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto z-10">
+            <div class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row w-full my-12 lg:w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 mx-auto -z-50">
               <iframe
                 title="Gaming Laptop"
                 frameborder="0"
@@ -328,7 +328,7 @@ function Home() {
                 execution-while-not-rendered
                 web-share
                 src={ar.url1}
-                className="w-96 h-96 z-0"
+                className="w-96 h-96 "
               >
                 {" "}
               </iframe>

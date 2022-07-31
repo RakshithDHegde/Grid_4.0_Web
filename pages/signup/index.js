@@ -11,7 +11,7 @@ const Home = () => {
   const { isAuthenticated, user } = useMoralis();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone,setPhone]=useState("");
+  const [phone, setPhone] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -22,16 +22,15 @@ const Home = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     if (!email || !name) return;
-    try{
-    const contract = new web3.eth.Contract(contractABI, contractAddress);
-    let response = await contract.methods
-      .storeUser(email, name,phone)
-      .send({ from: user.get("ethAddress") });
-    console.log(response);
-    router.push("/home");
-    }
-    catch (err){
-      alert("Error Occured")
+    try {
+      const contract = new web3.eth.Contract(contractABI, contractAddress);
+      let response = await contract.methods
+        .storeUser(email, name, phone)
+        .send({ from: user.get("ethAddress") });
+      console.log(response);
+      router.push("/home");
+    } catch (err) {
+      alert("Error Occured");
     }
   };
   return (
@@ -45,14 +44,14 @@ const Home = () => {
               alt="Flipkart Logo"
             />
             <span class="self-center text-2xl font-sans font-semibold whitespace-nowrap dark:text-white">
-              Flipkart Grid
+              Grid 4.0
             </span>
           </a>
         </div>
       </nav>
       <div className="flex min-h-screen flex-col items-center justify-center py-2">
         <Head>
-          <title>Flipkart Grid</title>
+          <title>Grid 4.0</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 

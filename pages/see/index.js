@@ -14,8 +14,8 @@ const Home = () => {
   const router = useRouter();
   const [winners, setWinners] = useState([]);
   useEffect(() => {
-    if (isAuthenticated) {
-      router.push("/home");
+    if (!isAuthenticated) {
+      router.push("/");
     }
   });
   useEffect(() => {
